@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Артур | Веб-дизайнер — портфолио</title>
+    <!-- Font Awesome 6 (free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Inter + Space Grotesk for modern style -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            color: #e0e0e0;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            line-height: 1.5;
+        }
+
+        /* red accent color: #dc2626 / #ef4444 */
+        :root {
+            --red: #dc2626;
+            --red-glow: #dc2626cc;
+            --dark-card: #0c0c0c;
+            --border-dim: #1f1f1f;
+        }
+
+        /* custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #dc2626;
+            border-radius: 8px;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* header / nav */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 28px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+            border-bottom: 1px solid var(--border-dim);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #ffffff 30%, #dc2626 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo span {
+            color: var(--red);
+            background: none;
+            -webkit-background-clip: unset;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+        .nav-links a {
+            color: #ddd;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+        .nav-links a:hover {
+            color: var(--red);
+        }
+
+        /* buttons */
+        .btn-primary {
+            background: var(--red);
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+            font-size: 0.9rem;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .btn-primary:hover {
+            background: #b91c1c;
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(220,38,38,0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--red);
+            padding: 10px 24px;
+            border-radius: 40px;
+            color: white;
+            font-weight: 500;
+            transition: 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-outline:hover {
+            background: var(--red);
+            border-color: var(--red);
+        }
+
+        /* hero section */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 50px;
+            padding: 70px 0 50px;
+        }
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(to right, #fff, #dc2626);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero-content .tagline {
+            font-size: 1.2rem;
+            margin: 20px 0 16px;
+            color: #b0b0b0;
+        }
+        .highlight {
+            color: var(--red);
+            border-left: 3px solid var(--red);
+            padding-left: 16px;
+            margin: 25px 0;
+            font-weight: 500;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            margin-top: 30px;
+        }
+        .hero-stats div p:first-child {
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: white;
+        }
+        /* фото-заглушка (абстрактное изображение в стиле дизайна) */
+        .hero-image {
+            background: radial-gradient(circle at 30% 20%, #1f1f1f, #050505);
+            border-radius: 30px;
+            padding: 20px;
+            border: 1px solid #2a2a2a;
+            box-shadow: 0 20px 35px -15px rgba(0,0,0,0.7);
+        }
+        .hero-image img {
+            max-width: 320px;
+            border-radius: 20px;
+            display: block;
+            filter: grayscale(20%);
+            transition: 0.3s;
+        }
+        .hero-image img:hover {
+            filter: grayscale(0%);
+        }
+
+        /* section titles */
+        .section-title {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin: 60px 0 30px 0;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: var(--red);
+            border-radius: 4px;
+        }
+
+        /* skills grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 28px;
+            margin: 40px 0;
+        }
+        .skill-card {
+            background: #0c0c0c;
+            border: 1px solid #202020;
+            border-radius: 24px;
+            padding: 24px;
+            transition: 0.25s;
+        }
+        .skill-card:hover {
+            border-color: var(--red);
+            transform: translateY(-5px);
+        }
+        .skill-card i {
+            font-size: 2rem;
+            color: var(--red);
+            margin-bottom: 16px;
+        }
+        .skill-bar {
+            background: #2a2a2a;
+            border-radius: 12px;
+            height: 8px;
+            margin: 15px 0 8px;
+            overflow: hidden;
+        }
+        .skill-progress {
+            background: var(--red);
+            width: 0%;
+            height: 100%;
+            border-radius: 12px;
+        }
+
+        /* портфолио фильтры и галерея */
+        .filter-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        .filter-btn {
+            background: transparent;
+            border: 1px solid #333;
+            padding: 8px 20px;
+            border-radius: 40px;
+            color: #ddd;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--red);
+            border-color: var(--red);
+            color: white;
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        .portfolio-item {
+            background: #0c0c0c;
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid #222;
+            transition: all 0.3s;
+        }
+        .portfolio-item:hover {
+            transform: scale(1.02);
+            border-color: var(--red);
+        }
+        .portfolio-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            background: #1a1a1a;
+        }
+        .portfolio-info {
+            padding: 20px;
+        }
+        .portfolio-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: white;
+        }
+        .portfolio-category {
+            color: var(--red);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* контактная секция без формы, с карточками */
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 35px;
+            justify-content: center;
+            margin: 50px 0 70px;
+        }
+        .contact-card {
+            background: #0c0c0c;
+            border: 1px solid #2a2a2a;
+            border-radius: 32px;
+            padding: 30px 30px;
+            text-align: center;
+            flex: 1;
+            min-width: 220px;
+            transition: 0.2s;
+        }
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--red);
+            margin-bottom: 15px;
+        }
+        .contact-card a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+        .bot-button-card {
+            background: linear-gradient(145deg, #0f0f0f, #050505);
+            border: 1.5px solid var(--red);
+            box-shadow: 0 0 12px rgba(220,38,38,0.3);
+            cursor: pointer;
+        }
+        .bot-button-card i {
+            font-size: 3rem;
+        }
+        .bot-button-card p {
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        footer {
+            border-top: 1px solid #1a1a1a;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #777;
+        }
+
+        /* ========== ЧАТ-БОТ (плавающий) ========== */
+        .chatbot-container {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 1000;
+        }
+        .chat-toggle {
+            background: var(--red);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(220,38,38,0.5);
+            transition: 0.2s;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+        }
+        .chat-toggle:hover {
+            transform: scale(1.07);
+            background: #b91c1c;
+        }
+        .chat-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 340px;
+            height: 460px;
+            background: #0e0e0e;
+            border-radius: 28px;
+            border: 1px solid #2c2c2c;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.6);
+            transition: 0.2s;
+        }
+        .hidden-chat {
+            display: none;
+        }
+        .chat-header {
+            background: #000;
+            padding: 16px;
+            border-bottom: 1px solid var(--red);
+            font-weight: bold;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+        }
+        .chat-close {
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .message {
+            max-width: 85%;
+            padding: 10px 14px;
+            border-radius: 18px;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+        .bot-msg {
+            background: #1f1f1f;
+            color: #efefef;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        .user-msg {
+            background: var(--red);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+        .chat-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 12px;
+            border-top: 1px solid #252525;
+            background: #0a0a0a;
+        }
+        .chat-btn {
+            background: #1e1e1e;
+            border: none;
+            color: #ddd;
+            padding: 8px 12px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: 0.1s;
+            flex: 1 0 auto;
+        }
+        .chat-btn:hover {
+            background: var(--red);
+            color: white;
+        }
+
+        @media (max-width: 750px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .container { padding: 0 20px; }
+            .nav-links { gap: 24px; }
+            .chat-window { width: 300px; right: -10px; }
+        }
+    </style>
+</head>
+<body>
+
+<main>
+    <div class="container">
+        <!-- навигация -->
+        <nav>
+            <div class="logo">ARTUR<span>.</span>DESIGN</div>
+            <div class="nav-links">
+                <a href="#portfolio">Работы</a>
+                <a href="#skills">Навыки</a>
+                <a href="#contact">Связь</a>
+            </div>
+            <a href="#contact" class="btn-primary">Обсудить проект</a>
+        </nav>
+
+        <!-- Hero -->
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Веб-дизайнер <br> создаю digital-опыты</h1>
+                <div class="tagline">Сайты · Карточки для WB · Презентации</div>
+                <div class="highlight">🎓 4 года в академии ITTOP — фундаментальное образование и коммерческий опыт</div>
+                <div class="hero-stats">
+                    <div><p>45+</p><span>проектов</span></div>
+                    <div><p>12</p><span>довольных брендов</span></div>
+                </div>
+                <div style="margin-top: 28px;">
+                    <a href="#portfolio" class="btn-outline" style="margin-right: 15px;">Смотреть кейсы</a>
+                    <a href="#contact" class="btn-primary">Связаться</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- абстрактное фото дизайнера / рабочее место, креативная картинка -->
+                <img src="https://placehold.co/400x500/111111/dc2626?text=ARTHUR+DESIGNER&font=montserrat" alt="Артур дизайнер" style="width:100%; max-width:340px;">
+            </div>
+        </div>
+
+        <!-- skills + обучение -->
+        <div id="skills">
+            <div class="section-title">Образование & экспертиза</div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>ITTOP Academy</h3>
+                    <p>4 года углубленного обучения: веб-дизайн, UX/UI, брендинг, инструменты Figma, фотошоп, Tilda, анимация.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-palette"></i>
+                    <h3>Веб-дизайн</h3>
+                    <div class="skill-bar"><div class="skill-progress" style="width:92%"></div></div>
+                    <p>Адаптив, прототипирование</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-tags"></i>
+                    <h3>Карточки WB / маркетплейсы</h3>
+                    <div class="skill-bar"><div class="skill-progress" style="width:95%"></div></div>
+                    <p>Инфографика, конверсия</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-chalkboard-user"></i>
+                    <h3>Презентации</h3>
+                    <div class="skill-bar"><div class="skill-progress" style="width:88%"></div></div>
+                    <p>Корпоративные, стартап-питчи</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Портфолио с фильтрацией (современные карточки) -->
+        <div id="portfolio">
+            <div class="section-title">Избранные проекты</div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="web">Веб-дизайн</button>
+                <button class="filter-btn" data-filter="wb">Карточки WB</button>
+                <button class="filter-btn" data-filter="pres">Презентации</button>
+            </div>
+            <div class="portfolio-grid" id="portfolioGrid">
+                <!-- элементы портфолио (с изображениями по теме) -->
+                <div class="portfolio-item" data-cat="web">
+                    <img class="portfolio-img" src="https://placehold.co/600x400/1c1c1c/dc2626?text=Modern+Landing+Page" alt="сайт">
+                    <div class="portfolio-info"><h3>Лендинг «NeoBank»</h3><div class="portfolio-category">Веб-дизайн</div><p>Адаптивный сайт с микро-анимациями</p></div>
+                </div>
+                <div class="portfolio-item" data-cat="wb">
+                    <img class="portfolio-img" src="https://placehold.co/600x400/2a1a1a/dc2626?text=WB+Card+Design" alt="карточка WB">
+                    <div class="portfolio-info"><h3>Wildberries: Умные часы</h3><div class="portfolio-category">Карточка WB</div><p>Инфографика + повышение CTR на 34%</p></div>
+                </div>
+                <div class="portfolio-item" data-cat="pres">
+                    <img class="portfolio-img" src="https://placehold.co/600x400/111111/dc2626?text=Investor+Deck" alt="презентация">
+                    <div class="portfolio-info"><h3>Презентация стартапа</h3><div class="portfolio-category">Презентация</div><p>Гармония данных и визуала</p></div>
+                </div>
+                <div class="portfolio-item" data-cat="web">
+                    <img class="portfolio-img" src="https://placehold.co/600x400/202020/dc2626?text=Ecom+Platform" alt="интернет-магазин">
+                    <div class="portfolio-info"><h3>Интернет-магазин мебели</h3><div class="portfolio-category">Веб-дизайн</div><p>UI-kit + прототип</p></div>
+                </div>
+                <div class="portfolio-item" data-cat="wb">
+                    <img class="portfolio-img" src="https://placehold.co/600x400/2c1a1a/dc2626?text=WB+Premium" alt="карточка WB">
+                    <div class="portfolio-info"><h3>Косметика бренда LUX</h3><div class="portfolio-category">Карточки WB</div><p>Дизайн карточек + видео-обложка</p></div>
+                </div>
+                <div class="portfolio-item" data-cat="pres">
+                    <img class="portfolio-img" src="https://placehold.co/600x400/1f1f1f/dc2626?text=Annual+Report" alt="презентация">
+                    <div class="portfolio-info"><h3>Годовой отчет IT компании</h3><div class="portfolio-category">Презентация</div><p>Минимализм, акцент на цифры</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Контакты: без почты и формы, только номер, вк, тг и бот-карточка которая ведет на VK/звонок -->
+        <div id="contact">
+            <div class="section-title">Связь со мной</div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Позвонить</h3>
+                    <a href="tel:+79523474367">+7 952 347 43 67</a>
+                </div>
+                <div class="contact-card">
+                    <i class="fab fa-telegram-plane"></i>
+                    <h3>Telegram</h3>
+                    <a href="https://t.me/xxx_livchik" target="_blank">t.me/xxx_livchik</a>
+                </div>
+                <div class="contact-card">
+                    <i class="fab fa-vk"></i>
+                    <h3>ВКонтакте</h3>
+                    <a href="http://vk.com/id1081943110" target="_blank">vk.com/id1081943110</a>
+                </div>
+                <!-- БОТ-карточка, которая будет направлять на VK (и звонок через попап-бот) но по сути это отдельный элемент -->
+                <div class="contact-card bot-button-card" id="openBotCard">
+                    <i class="fas fa-robot"></i>
+                    <h3>🤖 Дизайн-бот</h3>
+                    <p>Нажми → связь / основы дизайна</p>
+                    <small style="color:#dc2626;">Меню быстрых действий</small>
+                </div>
+            </div>
+            <p style="text-align:center; margin-top: -20px; margin-bottom: 30px; font-size:0.85rem;">✨ Бот поможет узнать о дизайне, позвонить или написать в VK/Telegram</p>
+        </div>
+        <footer>
+            <p>© 2025 Артур — веб-дизайнер. Выпускник ITTOP. Черный & красный стиль.</p>
+        </footer>
+    </div>
+</main>
+
+<!-- Чат-бот плавающий -->
+<div class="chatbot-container">
+    <div class="chat-toggle" id="chatToggleBtn">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+    <div id="chatWindow" class="chat-window hidden-chat">
+        <div class="chat-header">
+            <span><i class="fas fa-robot" style="color:#dc2626;"></i> Артур-бот</span>
+            <button class="chat-close" id="closeChatBtn"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-msg">Привет! Я дизайн-ассистент Артура. На связи 24/7. Что вам нужно?</div>
+        </div>
+        <div class="chat-buttons" id="chatButtons">
+            <button class="chat-btn" data-action="vk">📱 Написать в ВК</button>
+            <button class="chat-btn" data-action="tg">✈️ Telegram</button>
+            <button class="chat-btn" data-action="call">📞 Позвонить</button>
+            <button class="chat-btn" data-action="about_web">🌐 Веб-дизайн</button>
+            <button class="chat-btn" data-action="about_wb">🛍️ Карточки WB</button>
+            <button class="chat-btn" data-action="about_pres">📊 Презентации</button>
+            <button class="chat-btn" data-action="menu">🔁 Главное меню</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Фильтрация портфолио
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    
+    function filterPortfolio(category) {
+        portfolioItems.forEach(item => {
+            if(category === 'all' || item.getAttribute('data-cat') === category) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.getAttribute('data-filter');
+            filterPortfolio(filter);
+        });
+    });
+    filterPortfolio('all');
+
+    // ---------- Чат-бот логика (направляет на VK, звонок, рассказывает про дизайн) ----------
+    const chatWindow = document.getElementById('chatWindow');
+    const toggleBtn = document.getElementById('chatToggleBtn');
+    const closeChat = document.getElementById('closeChatBtn');
+    const chatMessagesDiv = document.getElementById('chatMessages');
+    const chatBtns = document.querySelectorAll('.chat-btn');
+
+    function addMessage(text, isUser = false) {
+        const msgDiv = document.createElement('div');
+        msgDiv.classList.add('message', isUser ? 'user-msg' : 'bot-msg');
+        msgDiv.innerText = text;
+        chatMessagesDiv.appendChild(msgDiv);
+        chatMessagesDiv.scrollTop = chatMessagesDiv.scrollHeight;
+    }
+
+    function botResponse(action) {
+        switch(action) {
+            case 'vk':
+                addMessage("Открываю ВКонтакте Артура...", false);
+                setTimeout(() => { window.open('http://vk.com/id1081943110', '_blank'); }, 300);
+                break;
+            case 'tg':
+                addMessage("Переход в Telegram: t.me/xxx_livchik", false);
+                setTimeout(() => { window.open('https://t.me/xxx_livchik', '_blank'); }, 300);
+                break;
+            case 'call':
+                addMessage("Сейчас предложу позвонить по номеру +7 952 347 43 67", false);
+                setTimeout(() => {
+                    if(confirm("Позвонить дизайнеру Артуру? Номер +7 952 347 43 67")) {
+                        window.location.href = 'tel:+79523474367';
+                    }
+                }, 400);
+                break;
+            case 'about_web':
+                addMessage("🌐 Веб-дизайн — это создание удобных и красивых сайтов. Я делаю лендинги, интернет-магазины, корпоративные порталы с учетом UX/UI.", false);
+                break;
+            case 'about_wb':
+                addMessage("🛍️ Карточки для Wildberries: яркий дизайн, инфографика, структура описания. Повышаю конверсию и привлекаю внимание на маркетплейсе.", false);
+                break;
+            case 'about_pres':
+                addMessage("📊 Презентации: от стартап-деков до годовых отчетов. Лаконично, стильно, с акцентом на ключевые данные.", false);
+                break;
+            case 'menu':
+                addMessage("Выберите действие: VK, Telegram, звонок или вопросы про веб-дизайн / WB / презентации.", false);
+                break;
+            default: addMessage("Напишите или выберите кнопку :)", false);
+        }
+    }
+
+    function handleUserChoice(action) {
+        addMessage("Вы выбрали: " + action, true);
+        botResponse(action);
+    }
+
+    chatBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const action = btn.getAttribute('data-action');
+            if(action) handleUserChoice(action);
+        });
+    });
+
+    toggleBtn.addEventListener('click', () => {
+        chatWindow.classList.toggle('hidden-chat');
+        if(!chatWindow.classList.contains('hidden-chat')) {
+            // если окно открыто, добавим приветствие если пусто
+            if(chatMessagesDiv.children.length === 0) {
+                addMessage("Привет! Я бот Артура. Помогу с вопросами о дизайне, свяжу с ВК или позвоню.", false);
+            }
+        }
+    });
+    closeChat.addEventListener('click', () => {
+        chatWindow.classList.add('hidden-chat');
+    });
+
+    // карточка-бот в контактах тоже открывает чат и отправляет привет
+    const openBotCard = document.getElementById('openBotCard');
+    if(openBotCard) {
+        openBotCard.addEventListener('click', () => {
+            chatWindow.classList.remove('hidden-chat');
+            addMessage("👋 Привет! Я бот-помощник. Чтобы связаться с Артуром, используй кнопки: VK, Telegram, звонок. Также я расскажу про веб-дизайн, карточки WB и презентации.", false);
+        });
+    }
+
+    // стартовая синхронизация (если чат закрыт)
+</script>
+</body>
+</html>
